@@ -12,9 +12,13 @@ Full credits to the author _b4r0nd3l4b1rr4_'s [Teams-CS-Notifier](https://github
 
 > ## 使用方法：
 
-1. Modify the `notify.py` file to pull your or your team's device key into `DEVICE_KEY_LIST`, or change `BARK_SERVER` if you want.
+0. Install Bark.app and get your device key, The device key shows at `https://$Server/**$device_key**/`
 
-   > 1. 修改 `notify.py` 文件，将你或你的团队的设备密钥拉入 `DEVICE_KEY_LIST`，或者如果你想改变 `BARK_SERVER` 。
+   > 0. 安装 Bark.app 获取 device key, Device key 在 `https://$Server/**$device_key**/` 位置。
+
+1. Modify the `notify.py` file to pull your or your team member's device key into `DEVICE_KEY_LIST`, or change `BARK_SERVER` if you want.
+
+   > 1. 修改 `notify.py` 文件，将你或你的团队成员的设备密钥拉入 `DEVICE_KEY_LIST`，或者修改私有化部署的 `BARK_SERVER` 。
 
 2. Open your Cobalt Strike
 
@@ -33,6 +37,7 @@ The script will now send a notification to the bark-installed device every time 
 
 ## Requirements
 
+- Bark app installed
 - Cobalt Strike
 - Python 3
 - Requests module (`pip install requests`)
