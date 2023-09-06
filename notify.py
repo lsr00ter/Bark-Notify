@@ -24,10 +24,14 @@ def send_notification(
         "title": title,
         "body": notify_body,
         "device_key": key,
+        "level": "timeSensitive",
+        "badge": 1,
+        # "sound": "minuet.caf",
         # Cobalt Strike logo for push notification display
         "icon": "https://www.aldeid.com/w/images/8/83/Armitage-logo.png",
-        "group": "CobaltStrike",
-        "badge": 1,
+        "group": "CobaltStrike 上线提醒",
+        # 点开链接后打开的 URL
+        # "url": "https://github.com",
     }
     try:
         json.loads(json.dumps(payload))
