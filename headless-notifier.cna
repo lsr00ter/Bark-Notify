@@ -1,0 +1,30 @@
+global ('$address_and_key');
+global ('$notification_title');
+$PythonScriptPath = script_resource("notifier.py");
+
+$address_and_key = "http://api.day.app/**";
+$notification_title = "Check your teamserver!";
+
+# Hook for new beacons
+on beacon_initial {
+    local('$computer');
+    local('$internal');
+    local('$external');
+    local('$user');
+
+    # fetch beacon info
+    $computer = beacon_info($1, "computer");
+    $internal = beacon_info($1, "internal");
+    $external = beacon_info($1, "external");
+    $user = beacon_info($1, "user");
+
+    # Call the Python script
+    $command = @('python3', $PythonScriptPath, $notification_title, $computer, $internal, $external, $user, $address_and_key);
+    $handle = exec($command);
+    closef($handle);
+    if (checkError($error)) 
+    {
+        warn("$error");
+    }
+}
+
