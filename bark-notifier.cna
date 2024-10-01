@@ -4,15 +4,12 @@ menubar("Notifier", "generator", 2);
 global ('$address_and_key');
 global ('$notification_title');
 $PythonScriptPath = script_resource("notifier.py");
+$address_and_key = "http://api.day.app/**";
 
 debug(57);
-# popup when (re)load
-prompt_text("Setup the bark address and key", "http://api.day.app/**", {
-#    shownotificationdialog();
-});
 
 sub callback {
-    $notification_title = $3["title"];
+  $notification_title = $3["title"];
 	$address_and_key = $3["address_and_key"];
 	if((strlen($address_and_key) == 0))
 	{
@@ -29,7 +26,7 @@ sub callback {
 }
 
 sub shownotificationdialog{
-	$dialog = dialog("Notification Preferences",%(title => "Check your teamserver!", address_and_key => "http://api.day.app/**"),&callback);
+	$dialog = dialog("Notification Preferences",%(title => "Check your teamserver!", address_and_key => $address_and_key),&callback);
 	dialog_description($dialog, "Get notified when a new beacon calls home.\nGet config from app(up right): Server List - Copy Address and Key");
     drow_text($dialog, "title", "Custom your notification title:");
 	drow_text($dialog,"address_and_key","Paste your bark address and key:");
